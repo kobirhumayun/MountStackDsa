@@ -55,6 +55,8 @@ class LinkList {
 }
 
 let list = new LinkList(10);
+list.append(9);
+list.append(10);
 list.append(20);
 list.prepend(5);
 list.insertAtPosition(500, 3);
