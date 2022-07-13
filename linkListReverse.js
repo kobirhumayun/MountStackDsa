@@ -36,6 +36,7 @@ class LinkList {
         this.tail.next = null;
         this.head= current;
         this.head.next = prev;
+        
     }
 
     print() {
