@@ -57,11 +57,11 @@ class LinkList {
 
             let slow = this.head;
             let fast = this.head;
-            let isEven = true;
+            // let isEven = true;
             let counter = 0;
             while (fast != null) {
                 if (fast.next == null) {
-                    isEven = false;
+                    // isEven = false;
                     break;
                 }
                 counter++;
@@ -70,8 +70,7 @@ class LinkList {
 
             }
 
-            if (isEven) {
-                let prevNode = slow;
+            let prevNode = slow;
                 let currentNode = slow.next;
                 let nextNode = null;
                 while (currentNode) {
@@ -92,29 +91,52 @@ class LinkList {
                     right = right.next;
                 }
                 return true;
-            } else {
 
-                let prevNode = slow;
-                let currentNode = slow.next;
-                let nextNode = null;
-                while (currentNode) {
-                    nextNode = currentNode.next;
-                    currentNode.next = prevNode;
-                    prevNode = currentNode;
-                    currentNode = nextNode;
-                }
+            // if (isEven) {
+            //     let prevNode = slow;
+            //     let currentNode = slow.next;
+            //     let nextNode = null;
+            //     while (currentNode) {
+            //         nextNode = currentNode.next;
+            //         currentNode.next = prevNode;
+            //         prevNode = currentNode;
+            //         currentNode = nextNode;
 
-                let left = this.head;
-                let right = prevNode;
-                for (let i = 0; i < counter; i++) {
-                    if (left.data != right.data) {
-                        return false;
-                    }
-                    left = left.next;
-                    right = right.next;
-                }
-                return true;
-            }
+            //     }
+
+            //     let left = this.head;
+            //     let right = prevNode;
+            //     for (let i = 0; i < counter; i++) {
+            //         if (left.data != right.data) {
+            //             return false;
+            //         }
+            //         left = left.next;
+            //         right = right.next;
+            //     }
+            //     return true;
+            // } else {
+
+            //     let prevNode = slow;
+            //     let currentNode = slow.next;
+            //     let nextNode = null;
+            //     while (currentNode) {
+            //         nextNode = currentNode.next;
+            //         currentNode.next = prevNode;
+            //         prevNode = currentNode;
+            //         currentNode = nextNode;
+            //     }
+
+            //     let left = this.head;
+            //     let right = prevNode;
+            //     for (let i = 0; i < counter; i++) {
+            //         if (left.data != right.data) {
+            //             return false;
+            //         }
+            //         left = left.next;
+            //         right = right.next;
+            //     }
+            //     return true;
+            // }
 
         }
     }
