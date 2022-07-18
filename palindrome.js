@@ -57,15 +57,86 @@ class LinkList {
 
             let slow = this.head;
             let fast = this.head;
+            // let isEven = true;
+            let counter = 0;
             while (fast != null) {
-                if (fast.next == null) break;
-
+                if (fast.next == null) {
+                    // isEven = false;
+                    break;
+                }
+                counter++;
                 slow = slow.next;
                 fast = fast.next.next;
 
             }
-            console.log(slow.data);
 
+            let prevNode = slow;
+                let currentNode = slow.next;
+                let nextNode = null;
+                while (currentNode) {
+                    nextNode = currentNode.next;
+                    currentNode.next = prevNode;
+                    prevNode = currentNode;
+                    currentNode = nextNode;
+
+                }
+
+                let left = this.head;
+                let right = prevNode;
+                for (let i = 0; i < counter; i++) {
+                    if (left.data != right.data) {
+                        return false;
+                    }
+                    left = left.next;
+                    right = right.next;
+                }
+                return true;
+
+            // if (isEven) {
+            //     let prevNode = slow;
+            //     let currentNode = slow.next;
+            //     let nextNode = null;
+            //     while (currentNode) {
+            //         nextNode = currentNode.next;
+            //         currentNode.next = prevNode;
+            //         prevNode = currentNode;
+            //         currentNode = nextNode;
+
+            //     }
+
+            //     let left = this.head;
+            //     let right = prevNode;
+            //     for (let i = 0; i < counter; i++) {
+            //         if (left.data != right.data) {
+            //             return false;
+            //         }
+            //         left = left.next;
+            //         right = right.next;
+            //     }
+            //     return true;
+            // } else {
+
+            //     let prevNode = slow;
+            //     let currentNode = slow.next;
+            //     let nextNode = null;
+            //     while (currentNode) {
+            //         nextNode = currentNode.next;
+            //         currentNode.next = prevNode;
+            //         prevNode = currentNode;
+            //         currentNode = nextNode;
+            //     }
+
+            //     let left = this.head;
+            //     let right = prevNode;
+            //     for (let i = 0; i < counter; i++) {
+            //         if (left.data != right.data) {
+            //             return false;
+            //         }
+            //         left = left.next;
+            //         right = right.next;
+            //     }
+            //     return true;
+            // }
 
         }
     }
@@ -85,16 +156,8 @@ let list = new LinkList(1);
 list.append(2);
 list.append(3);
 list.append(4);
-list.append(5);
-list.append(6);
-// list.append(7);
-// list.append(8);
-// list.append(9);
-// list.append(10);
-
-console.log("Before Reverse");
-list.print();
-console.log("After Reverse");
-// list.reverse();
-// list.print();
-console.log(list.palindrome())
+list.append(3);
+list.append(2);
+list.append(1);
+// list.append(1);
+console.log(list.palindrome());
