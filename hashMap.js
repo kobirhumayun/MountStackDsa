@@ -29,6 +29,28 @@ class LinkList {
         return false;
 
     }
+    remove(val) {
+        if (this.head == null) return false;
+        if (this.head.val == val) {
+            this.head = this.head.next;
+            return true;
+        };
+        let prevNode = this.head;
+        let currentNode = this.head.next;
+        let nextNode = null;
+        while (currentNode) {
+            nextNode = currentNode.next;
+            if (currentNode.val == val) {
+                prevNode.next = nextNode;
+                return true;
+            }
+            prevNode = currentNode;
+            currentNode = nextNode;
+
+        }
+        return false;
+
+    }
 
     print() {
         let temp = this.head;
@@ -52,23 +74,33 @@ class hashMap {
         return index;
     }
     set(val) {
-        let index = this.hash(val)
+        let index = this.hash(val);
         if (!this.arr[index]) {
             this.arr[index] = new LinkList(val);
         } else {
-            let innerArr = this.arr[index]
-            innerArr.append(val)
+            let innerArr = this.arr[index];
+            innerArr.append(val);
         }
     }
     get(val) {
         let index = this.hash(val)
         if (!this.arr[index]) {
-            return false
+            return false;
         }
         let innerArr = this.arr[index]
         return innerArr.peek(val);
 
     }
+    remove(val) {
+        let index = this.hash(val)
+        if (!this.arr[index]) {
+            return false;
+        }
+        let innerArr = this.arr[index]
+        return innerArr.remove(val);
+
+    }
+
 
 }
 
@@ -78,10 +110,19 @@ hashDb.set(13)
 hashDb.set(13)
 hashDb.set(12)
 hashDb.set(11)
-hashDb.set(12)
+hashDb.set(125)
 hashDb.set(12)
 hashDb.set(3)
 hashDb.set(1)
+hashDb.set(1)
+hashDb.set(1)
+hashDb.set(1)
 hashDb.set(12)
-console.log(hashDb.get(3));
+console.log(hashDb.get(1));
+console.log(hashDb.remove(1));
+console.log(hashDb.remove(1));
+console.log(hashDb.remove(1));
+console.log(hashDb.remove(1));
+console.log(hashDb.remove(1));
+console.log(hashDb.remove(1));
 console.log(hashDb.arr);
