@@ -104,6 +104,41 @@ class hashMap {
 
 }
 
+function findDuplicate(arr) {
+    let tempHashDb = new hashMap();
+    for (i = 0; i < arr.length; i++) {
+        let isDuplicate = tempHashDb.get(arr[i]);
+        if (isDuplicate) {
+            return arr[i];
+        } else {
+            tempHashDb.set(arr[i]);
+        }
+    }
+    return "No Duplicate";
+}
+
+
+function towSum(arr, target) {
+    let tempHashDb = new hashMap();
+    for (i = 0; i < arr.length; i++) {
+        tempHashDb.set(arr[i])
+    }
+    for (i = 0; i < arr.length; i++) {
+        let isFirstValue = arr[i];
+        let isSecondValue = target - isFirstValue;
+        let isFound = tempHashDb.get(isSecondValue);
+        if (isFound) {
+
+            return `${isFirstValue} and ${isSecondValue}`;
+        }
+
+    }
+    return "Tow sum not Match"
+}
+
+console.log(findDuplicate([1, 45, 475, 34, 34, 45, 1]));
+console.log(towSum([45, 47, 34, 34, 45, 1], 92));
+
 let hashDb = new hashMap();
 hashDb.set(13)
 hashDb.set(13)
